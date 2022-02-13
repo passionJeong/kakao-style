@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+            PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+            "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+	<typeAliases>
+		<typeAlias type="apiserver.document.approval.dto.PostNewDocumentInDto" alias="postNewDocumentInDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetUserAccountInfoInDto" alias="getUserAccountInfoInDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetUserAccountInfoOutDto" alias="getUserAccountInfoOutDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetApproverListInDto" alias="getApproverListInDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetApproverListOutDto" alias="getApproverListOutDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetOutboxListInDto" alias="GetOutboxListInDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetOutboxListOutDto" alias="GetOutboxListOutDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetInboxListInDto" alias="getInboxListInDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetInboxListOutDto" alias="getInboxListOutDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetArchiveListInDto" alias="getArchiveListInDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetArchiveListOutDto" alias="getArchiveListOutDto"/>
+		<typeAlias type="apiserver.document.approval.dto.PutDocumentApproveStatusInDto" alias="putDocumentApproveStatusInDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetDocumentInfoInDto" alias="getDocumentInfoInDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetDocumentInfoOutDto" alias="getDocumentInfoOutDto"/>
+		<typeAlias type="apiserver.document.approval.dto.PostUserAccountInDto" alias="PostUserAccountInDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetDocumentApproveHistoryInDto" alias="getDocumentApproveHistoryInDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetDocumentApproveHistoryOutDto" alias="getDocumentApproveHistoryOutDto"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/PostNewDocumentMapper.xml"/>
+		<mapper resource="mapper/GetUserAccountInfoMapper.xml"/>
+		<mapper resource="mapper/GetApproverListMapper.xml"/>
+		<mapper resource="mapper/GetOutboxListMapper.xml"/>
+		<mapper resource="mapper/GetInboxListMapper.xml"/>
+		<mapper resource="mapper/GetArchiveListMapper.xml"/>
+		<mapper resource="mapper/GetDocumentApproveHistoryMapper.xml"/>
+		<mapper resource="mapper/PutDocumentApproveStatusMapper.xml"/>
+		<mapper resource="mapper/GetDocumentInfoMapper.xml"/>
+		<mapper resource="mapper/PostUserAccountMapper.xml"/>
+	</mappers>
+</configuration>

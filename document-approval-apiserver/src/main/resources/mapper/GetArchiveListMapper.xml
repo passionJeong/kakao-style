@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+            PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+            "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="apiserver.document.approval.mapper.GetArchiveListMapper">
+    <select id="getArchiveList" parameterType="getArchiveListInDto" resultType="getArchiveListOutDto">
+		SELECT DOCUMENT_NUM, DOCUMENT_TITLE, DOCUMENT_TYPE, DOCUMENT_CONTENTS, APPROVE_STATUS
+		FROM DOCUMENT_INFO
+		WHERE (DOCUMENT_NUM IN (
+			SELECT DOCUMENT_NUM FROM DOCUMENT_APPROVE_LOG
+			WHERE APPROVE_USER_NUM = #{userNum}
+		)
+		OR OWNER_USER_NUM = #{userNum})
+		AND APPROVE_STATUS IN ('A', 'D')
+    </select>
+</mapper>

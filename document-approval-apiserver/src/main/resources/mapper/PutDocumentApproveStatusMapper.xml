@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+            PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+            "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="apiserver.document.approval.mapper.PutDocumentApproveStatusMapper">
+    <update id="putDocumentApproveStatus" parameterType="putDocumentApproveStatusInDto">
+		UPDATE DOCUMENT_INFO
+		SET APPROVE_STATUS = #{approveStatus},
+		APPROVE_USER_NUM = #{approveUserNum}
+		WHERE DOCUMENT_NUM = #{documentNum}
+    </update>
+    <insert id="postDocumentApproveLog" parameterType="putDocumentApproveStatusInDto">
+    	INSERT INTO DOCUMENT_APPROVE_LOG(DOCUMENT_NUM, APPROVE_STATUS, APPROVE_MESSAGE, APPROVE_USER_NUM)
+    	VALUES(#{documentNum}, #{approveStatus}, #{approveMessage}, #{approveUserNum})
+    </insert>
+</mapper>

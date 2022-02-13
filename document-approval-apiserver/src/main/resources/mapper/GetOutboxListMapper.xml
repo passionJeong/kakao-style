@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+            PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+            "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="apiserver.document.approval.mapper.GetDocumentApproveHistoryMapper">
+    <select id="getDocumentApproveHistory" parameterType="getDocumentApproveHistoryInDto" resultType="getDocumentApproveHistoryOutDto">
+		SELECT 	APPROVE_STATUS, APPROVE_MESSAGE, APPROVE_USER_NUM
+		FROM DOCUMENT_APPROVE_LOG
+		WHERE DOCUMENT_NUM = #{documentNum}
+    </select>
+</mapper>

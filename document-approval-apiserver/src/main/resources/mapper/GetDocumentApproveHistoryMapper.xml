@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+            PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+            "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="apiserver.document.approval.mapper.GetOutboxListMapper">
+    <select id="getOutboxList" parameterType="getOutboxListInDto" resultType="getOutboxListOutDto">
+		SELECT DOCUMENT_NUM, DOCUMENT_TITLE, DOCUMENT_TYPE, DOCUMENT_CONTENTS
+		FROM DOCUMENT_INFO
+		WHERE OWNER_USER_NUM = #{userNum}
+		AND APPROVE_STATUS = 'I'
+    </select>
+</mapper>

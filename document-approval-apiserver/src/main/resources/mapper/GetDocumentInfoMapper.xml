@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+            PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+            "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="apiserver.document.approval.mapper.GetDocumentInfoMapper">
+    <select id="getDocumentInfo" parameterType="getDocumentInfoInDto" resultType="getDocumentInfoOutDto">
+    	SELECT DOCUMENT_NUM, DOCUMENT_TITLE, DOCUMENT_TYPE, DOCUMENT_CONTENTS, OWNER_USER_NUM, APPROVE_STATUS, APPROVE_USER_NUM, APPROVE_LINE
+    	FROM DOCUMENT_INFO
+    	WHERE DOCUMENT_NUM = #{documentNum}
+    </select>
+</mapper>
