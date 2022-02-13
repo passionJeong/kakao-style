@@ -5,9 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.List;
 
-import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.Test;
-import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -30,7 +28,6 @@ import apiserver.document.approval.service.PutDocumentApproveStatusService;
  */
 
 @SpringBootTest
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GetArchiveListServiceTest {
 
 	@Autowired
@@ -46,7 +43,7 @@ public class GetArchiveListServiceTest {
 	GetApproverListService getApproverListService;
 
 	@Test
-	public void test1_getApproverListTest() {
+	public void getApproverListTest() {
 		List<GetApproverListOutDto> output = getApproverListService.getApproverList();
 
 		for (GetApproverListOutDto approver : output) {
@@ -56,7 +53,7 @@ public class GetArchiveListServiceTest {
 	}
 
 	@Test
-	public void test2_postNewDocumentTest() {
+	public void postNewDocumentTest() {
 		PostNewDocumentInDto input = new PostNewDocumentInDto();
 		input.setDocumentTitle("testTitle");
 		input.setDocumentType("testType");
@@ -81,7 +78,7 @@ public class GetArchiveListServiceTest {
 	}
 
 	@Test
-	public void test3_putDocumentApproveStatus() {
+	public void putDocumentApproveStatus() {
 		// 1번 문서
 		// 1번 사용자 결재
 		PutDocumentApproveStatusInDto input = new PutDocumentApproveStatusInDto();
