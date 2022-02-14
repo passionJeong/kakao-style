@@ -15,14 +15,14 @@ public enum ErrorCode {
     APRV_COMPLETE(HttpStatus.BAD_REQUEST, "결재가 이미 완료 또는 반려된 문서입니다."),
     POST_DOC_FAIL(HttpStatus.BAD_REQUEST, "문서 생성에 실패하였습니다."),
     APRV_DOC_FAIL(HttpStatus.BAD_REQUEST, "문서 결재를 실패하였습니다."),
-    APRV_LINE_NOT_FOUND(HttpStatus.BAD_REQUEST, "결재자를 1명 이상 지정해주세요."),
+    APRV_INVALID_SEPARATOR(HttpStatus.BAD_REQUEST, "결재자 리스트의 구분자를 ','로 지정해주세요."),
     INVALID_INPUT(HttpStatus.BAD_REQUEST, "입력값을 확인해주세요."),
 
     /* 401 UNAUTHORIZED : 인증되지 않은 사용자 */
     UNAUTHORIZED_USER(HttpStatus.UNAUTHORIZED, "해당 문서에 결재권한이 없습니다."),
 
     /* 404 NOT_FOUND : Resource 를 찾을 수 없음 */
-    USER_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 유저 정보를 찾을 수 없습니다."),
+    USER_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 사용자 정보를 찾을 수 없습니다."),
     APRV_USER_NOT_FOUND(HttpStatus.NOT_FOUND, "결재자 정보를 찾을 수 없습니다."),
     DOC_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 문서입니다."),
     ;

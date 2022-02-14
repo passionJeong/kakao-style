@@ -23,7 +23,7 @@ public class PostUserAccountServiceImpl implements PostUserAccountService {
 	@Override
 	public PostUserAccountOutDto postUserAccount(PostUserAccountInDto input) {
 
-		//결재권이 없음을 기본 권한으로 넣는다
+		//client에서 권한을 설정하지 않는다면, 결재권이 없음을 기본 권한으로 넣는다
 		if(input.getApproveAuthority() == null) {
 			input.setApproveAuthority(false);
 		}

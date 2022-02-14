@@ -35,7 +35,7 @@ public class NewDocumentController {
 		this.postNewDocumentService = postNewDocumentService;
 	}
 	
-	//결재자 리스트 정보를 읽어온다.
+	//결재자 리스트 정보 조회 서비스
 	@ResponseBody
 	@GetMapping("/v1/approver-list")
 	public List<GetApproverListOutDto> getApproverList(@RequestBody GetApproverListInDto input) {
@@ -44,7 +44,7 @@ public class NewDocumentController {
 		return approverList;
 	}
 	
-	//문서 생성
+	//문서 생성 서비스
 	@ResponseBody
 	@PostMapping("/v1/new-document")
 	public PostNewDocumentOutDto postNewDocument(@RequestBody @Valid PostNewDocumentInDto newDocument) {

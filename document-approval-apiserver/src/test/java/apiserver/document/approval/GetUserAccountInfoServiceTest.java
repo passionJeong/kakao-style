@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * 사용자 정보 조회 테스트
  * @author jeongseoyeon
- * jointest123 ID 회원가입 및 정보를 조회
+ * jointest1, jointest2 ID 회원가입 -> 로그인 -> 결재자 정보 가져오기
  */
 
 @SpringBootTest
@@ -40,6 +40,7 @@ public class GetUserAccountInfoServiceTest {
 	public void postUserAccount() {
 		PostUserAccountInDto input = new PostUserAccountInDto();
 		input.setUserId("jointest1");
+		input.setUserPw("password1");
 		input.setApproveAuthority(true);
 		
 		PostUserAccountOutDto output = postUserAccountService.postUserAccount(input);
@@ -47,6 +48,7 @@ public class GetUserAccountInfoServiceTest {
 		assertEquals("회원가입 성공", output.getResult());
 
 		input.setUserId("jointest2");
+		input.setUserPw("password2");
 		input.setApproveAuthority(false);
 
 		output = postUserAccountService.postUserAccount(input);
@@ -60,6 +62,7 @@ public class GetUserAccountInfoServiceTest {
 	public void getUserAccountInfoServiceTest() {
 		GetUserAccountInfoInDto input = new GetUserAccountInfoInDto();
 		input.setUserId("jointest1");
+		input.setUserPw("password1");
 		GetUserAccountInfoOutDto output = getUserAccountInfoService.doLogin(input);
 
 		assertEquals(4, output.getUserNum());

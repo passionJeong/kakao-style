@@ -42,7 +42,7 @@ public class LoginController {
 		return userAccountInfo;
 	}
 	
-	//회원가입
+	//회원가입 서비스
 	@ResponseBody
 	@PostMapping("/v1/user-account")
 	public PostUserAccountOutDto postUserAccount(@RequestBody @Valid PostUserAccountInDto input) {

@@ -14,6 +14,12 @@ import apiserver.document.approval.mapper.GetDocumentInfoMapper;
 import apiserver.document.approval.mapper.PutDocumentApproveStatusMapper;
 import apiserver.document.approval.service.PutDocumentApproveStatusService;
 
+/**
+ * 문서 결재 서비스
+ * @author jeongseoyeon
+ * 문서의 승인/반려를 처리한다.
+ */
+
 @Component
 public class PutDocumentApproveStatusServiceImpl implements PutDocumentApproveStatusService {
 

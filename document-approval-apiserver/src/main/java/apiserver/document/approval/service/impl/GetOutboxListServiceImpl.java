@@ -9,6 +9,12 @@ import apiserver.document.approval.dto.GetOutboxListOutDto;
 import apiserver.document.approval.mapper.GetOutboxListMapper;
 import apiserver.document.approval.service.GetOutboxListService;
 
+/**
+ * Outbox 조회 서비스
+ * @author jeongseoyeon
+ * 내가 생성한 문서 중 결재가 진행중인(approveStatus = I) 문서를 조회
+ */
+
 @Component
 public class GetOutboxListServiceImpl implements GetOutboxListService {
 

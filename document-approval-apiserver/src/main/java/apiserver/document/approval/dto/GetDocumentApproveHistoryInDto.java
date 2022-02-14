@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+@Setter
 public class GetDocumentApproveHistoryInDto {
 	
 	@NotNull(message = "문서번호를 입력해주세요.")

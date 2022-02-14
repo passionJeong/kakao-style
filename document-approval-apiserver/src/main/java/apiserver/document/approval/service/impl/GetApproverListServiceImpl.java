@@ -10,6 +10,12 @@ import apiserver.document.approval.exception.ErrorCode;
 import apiserver.document.approval.mapper.GetApproverListMapper;
 import apiserver.document.approval.service.GetApproverListService;
 
+/**
+ * 결재권자 조회 서비스
+ * @author jeongseoyeon
+ * 결재권한이 있는 사용자 리스트를 조회한다.
+ */
+
 @Component
 public class GetApproverListServiceImpl implements GetApproverListService{
 	
@@ -22,7 +28,8 @@ public class GetApproverListServiceImpl implements GetApproverListService{
 	@Override
 	public List<GetApproverListOutDto> getApproverList() {
 		List<GetApproverListOutDto> approverList = getApproverListMapper.getApproverList();
-		
+
+		//결재권한이 있는 사용자가 없을경우
 		if(approverList.size() == 0) {
 			throw new CustomException(ErrorCode.APRV_USER_NOT_FOUND);
 		}

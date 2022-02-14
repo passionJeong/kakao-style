@@ -9,6 +9,12 @@ import apiserver.document.approval.dto.GetInboxListOutDto;
 import apiserver.document.approval.mapper.GetInboxListMapper;
 import apiserver.document.approval.service.GetInboxListService;
 
+/**
+ * Inbox 조회 서비스
+ * @author jeongseoyeon
+ * 결재를 해야하는 문서를 조회한다.
+ */
+
 @Component
 public class GetInboxListServiceImpl implements GetInboxListService {
 
