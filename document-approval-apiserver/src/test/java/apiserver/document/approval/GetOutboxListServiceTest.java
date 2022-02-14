@@ -4,7 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -22,6 +25,7 @@ import apiserver.document.approval.service.PostNewDocumentService;
  */
 
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class GetOutboxListServiceTest {
 	
 	@Autowired
@@ -31,6 +35,7 @@ public class GetOutboxListServiceTest {
 	GetOutboxListService getOutboxListService;
 	
 	@Test
+	@Order(value = 1)
 	public void postNewDocumentTest() {
 		PostNewDocumentInDto input = new PostNewDocumentInDto();
 		input.setDocumentTitle("testTitle");
@@ -46,6 +51,7 @@ public class GetOutboxListServiceTest {
 	}
 	
 	@Test
+	@Order(value = 2)
 	public void getOutboxListTest() {
 		//1번 사용자로 조회
 		GetOutboxListInDto input = new GetOutboxListInDto();
