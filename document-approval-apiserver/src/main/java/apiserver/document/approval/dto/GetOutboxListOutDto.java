@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 public class GetOutboxListOutDto {
 	
 	//문서번호
