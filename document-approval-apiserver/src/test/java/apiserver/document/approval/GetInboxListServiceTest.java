@@ -4,7 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -25,6 +28,7 @@ import apiserver.document.approval.service.PutDocumentApproveStatusService;
  */
 
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class GetInboxListServiceTest {
 
 	@Autowired
@@ -37,6 +41,7 @@ public class GetInboxListServiceTest {
 	GetInboxListService getInboxListService;
 	
 	@Test
+	@Order(value = 1)
 	public void postNewDocumentTest() {
 		PostNewDocumentInDto input = new PostNewDocumentInDto();
 		input.setDocumentTitle("testTitle");
@@ -52,6 +57,7 @@ public class GetInboxListServiceTest {
 	}
 	
 	@Test
+	@Order(value = 2)
 	public void putDocumentApproveStatus() {
 		PutDocumentApproveStatusInDto input = new PutDocumentApproveStatusInDto();
 		input.setDocumentNum(1);
@@ -66,6 +72,7 @@ public class GetInboxListServiceTest {
 	}
 	
 	@Test
+	@Order(value = 3)
 	public void getInboxListTest() {
 		//2번 사용자로 조회
 		GetInboxListInDto input = new GetInboxListInDto();
