@@ -9,6 +9,12 @@ import apiserver.document.approval.exception.ErrorCode;
 import apiserver.document.approval.mapper.PostNewDocumentMapper;
 import apiserver.document.approval.service.PostNewDocumentService;
 
+/**
+ * 문서 생성 서비스
+ * @author jeongseoyeon
+ * 문서를 생성한다.
+ */
+
 @Component
 public class PostNewDocumentServiceImpl implements PostNewDocumentService {
 	
@@ -20,16 +26,17 @@ public class PostNewDocumentServiceImpl implements PostNewDocumentService {
 	
 	@Override
 	public PostNewDocumentOutDto postNewDocument(PostNewDocumentInDto newDocument) {
-		
-		//결재자가 한 명도 지정되지 않았을 경우
-		if(newDocument.getApproveLine() == null || newDocument.getApproveLine().equals("")) {
-			throw new CustomException(ErrorCode.APRV_LINE_NOT_FOUND);
-		}
-		
-		//결재라인 첫번 째 사원번호를 결재자로 지정
+
 		String[] approveLine = newDocument.getApproveLine().split(",");
-		newDocument.setApproveUserNum(Integer.parseInt(approveLine[0]));
-		
+
+		try {
+			//결재라인 첫번 째 사원번호를 결재자로 지정
+			newDocument.setApproveUserNum(Integer.parseInt(approveLine[0]));
+		} catch(NumberFormatException e) {
+			//결재자가 한 명도 지정되지 않았을 경우(','를 구분자로 하지 않았을 경우)
+			throw new CustomException(ErrorCode.APRV_INVALID_SEPARATOR);
+		}
+
 		int result = documentMapper.postNewDocument(newDocument);
 		PostNewDocumentOutDto output = new PostNewDocumentOutDto();
 		

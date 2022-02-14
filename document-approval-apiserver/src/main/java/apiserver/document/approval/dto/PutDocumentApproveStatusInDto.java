@@ -19,8 +19,8 @@ public class PutDocumentApproveStatusInDto {
 	private Integer approveUserNum;
 	
 	//승인 또는 거절
-	@Size(min = 1, max = 1)
-	@NotNull(message = "승인 또는 거절 값을 입력해주세요.")
+	@Size(min = 1, max = 1, message = "승인(A) 또는 거절(D) 값을 입력해주세요.")
+	@NotNull(message = "승인(A) 또는 거절(D) 값을 입력해주세요.")
 	private String approveStatus;
 	
 	//결재 메시지

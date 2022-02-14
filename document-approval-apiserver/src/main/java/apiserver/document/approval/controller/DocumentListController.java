@@ -39,7 +39,7 @@ public class DocumentListController {
 		this.getArchiveListService = getArchiveListService;
 	}
 	
-	//outbox
+	//outbox 조회
 	@ResponseBody
 	@GetMapping("/v1/outbox-list")
 	public List<GetOutboxListOutDto> getOutboxList(@RequestBody @Valid GetOutboxListInDto input) {
@@ -48,7 +48,7 @@ public class DocumentListController {
 		return outboxList;
 	}
 	
-	//inbox
+	//inbox 조회
 	@ResponseBody
 	@GetMapping("/v1/inbox-list")
 	public List<GetInboxListOutDto> getInboxList(@RequestBody @Valid GetInboxListInDto input) {
@@ -57,7 +57,7 @@ public class DocumentListController {
 		return inboxList;
 	}
 	
-	//archive
+	//archive 조회
 	@ResponseBody
 	@GetMapping("/v1/archive-list")
 	public List<GetArchiveListOutDto> getArchiveList(@RequestBody @Valid GetArchiveListInDto input) {

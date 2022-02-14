@@ -9,6 +9,12 @@ import apiserver.document.approval.dto.GetArchiveListOutDto;
 import apiserver.document.approval.mapper.GetArchiveListMapper;
 import apiserver.document.approval.service.GetArchiveListService;
 
+/**
+ * Archive 조회 서비스
+ * @author jeongseoyeon
+ * 결재가 완료된 문서를 조회한다. 문서 소유자이거나 결재에 참여했던 문서를 조회한다.
+ */
+
 @Component
 public class GetArchiveListServiceImpl implements GetArchiveListService {
 

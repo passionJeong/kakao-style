@@ -34,7 +34,8 @@ public class DocumentApprovalController {
 		this.putDocumentApproveStatusService = putDocumentApproveStatusService;
 		this.getDocumentApproveHistoryService = getDocumentApproveHistoryService;
 	}
-	
+
+	//문서 승인, 거절 서비스
 	@ResponseBody
 	@PutMapping("/v1/document-approve-status")
 	public PutDocumentApproveStatusOutDto putDocumentApproveStatus(@RequestBody @Valid PutDocumentApproveStatusInDto documentApproveStatus) {
@@ -42,7 +43,8 @@ public class DocumentApprovalController {
 		
 		return output;
 	}
-	
+
+	//문서 승인, 거절 히스토리 조회 서비스
 	@ResponseBody
 	@GetMapping("/v1/document-approve-history")
 	public List<GetDocumentApproveHistoryOutDto> getDocumentApproveHistory(@RequestBody @Valid GetDocumentApproveHistoryInDto input) {
