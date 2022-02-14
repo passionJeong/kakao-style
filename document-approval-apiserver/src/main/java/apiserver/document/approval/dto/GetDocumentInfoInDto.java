@@ -9,6 +9,4 @@ public class GetDocumentInfoInDto {
 	//문서 번호
 	private Integer documentNum;
 
-	public void setDocumentNum(Integer documentNum) {
-	}
 }
