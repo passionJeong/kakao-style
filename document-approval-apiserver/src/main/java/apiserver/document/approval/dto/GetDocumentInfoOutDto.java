@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 public class GetDocumentInfoOutDto {
 	
 	private Integer documentNum;
@@ -22,4 +21,7 @@ public class GetDocumentInfoOutDto {
 	private Integer approveUserNum;
 	
 	private String approveLine;
+
+	public Integer getApproveUserNum;
+
 }
