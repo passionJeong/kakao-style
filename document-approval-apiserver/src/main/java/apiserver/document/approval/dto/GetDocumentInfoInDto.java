@@ -1,6 +1,5 @@
 package apiserver.document.approval.dto;
 
-import lombok.Getter;
 import lombok.Setter;
 
 @Setter

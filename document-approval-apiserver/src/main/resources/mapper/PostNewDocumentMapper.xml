@@ -4,7 +4,14 @@
             "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="apiserver.document.approval.mapper.PostNewDocumentMapper">
 	<insert id="postNewDocument" parameterType="postNewDocumentInDto">
-		INSERT INTO DOCUMENT_INFO(DOCUMENT_TITLE, DOCUMENT_TYPE, DOCUMENT_CONTENTS, OWNER_USER_NUM, APPROVE_STATUS, APPROVE_USER_NUM, APPROVE_LINE)
-		VALUES(#{documentTitle}, #{documentType}, #{documentContents}, #{ownerUserNum}, 'I', #{approveUserNum}, #{approveLine})
+		INSERT INTO DOCUMENT_INFO(DOCUMENT_TITLE, DOCUMENT_TYPE, DOCUMENT_CONTENTS, OWNER_USER_NUM, APPROVE_STATUS, APPROVE_USER_NUM)
+		VALUES(#{documentTitle}, #{documentType}, #{documentContents}, #{ownerUserNum}, 'I', #{approveUserNum})
+    </insert>
+    <select id="getDocumentCount" resultType="_int">
+		SELECT COUNT(*) FROM DOCUMENT_INFO
+    </select>
+    <insert id="postNewApproveLine" parameterType="postNewApproveLineInDto">
+		INSERT INTO APPROVE_LINE(DOCUMENT_NUM, APPROVE_ORDER, APPROVE_USER_NUM, APPROVE_STATUS)
+		VALUES(#{documentNum}, #{approveOrder}, #{approveUserNum}, #{approveStatus})
     </insert>
 </mapper>

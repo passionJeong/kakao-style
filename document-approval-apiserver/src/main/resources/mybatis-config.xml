@@ -12,6 +12,7 @@
 		<typeAlias type="apiserver.document.approval.dto.GetUserAccountInfoOutDto" alias="getUserAccountInfoOutDto"/>
 		<typeAlias type="apiserver.document.approval.dto.GetApproverListInDto" alias="getApproverListInDto"/>
 		<typeAlias type="apiserver.document.approval.dto.GetApproverListOutDto" alias="getApproverListOutDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetNextApproveUserNumOutDto" alias="getNextApproveUserNumOutDto"/>
 		<typeAlias type="apiserver.document.approval.dto.GetOutboxListInDto" alias="GetOutboxListInDto"/>
 		<typeAlias type="apiserver.document.approval.dto.GetOutboxListOutDto" alias="GetOutboxListOutDto"/>
 		<typeAlias type="apiserver.document.approval.dto.GetInboxListInDto" alias="getInboxListInDto"/>
@@ -22,8 +23,9 @@
 		<typeAlias type="apiserver.document.approval.dto.GetDocumentInfoInDto" alias="getDocumentInfoInDto"/>
 		<typeAlias type="apiserver.document.approval.dto.GetDocumentInfoOutDto" alias="getDocumentInfoOutDto"/>
 		<typeAlias type="apiserver.document.approval.dto.PostUserAccountInDto" alias="PostUserAccountInDto"/>
-		<typeAlias type="apiserver.document.approval.dto.GetDocumentApproveHistoryInDto" alias="getDocumentApproveHistoryInDto"/>
-		<typeAlias type="apiserver.document.approval.dto.GetDocumentApproveHistoryOutDto" alias="getDocumentApproveHistoryOutDto"/>
+		<typeAlias type="apiserver.document.approval.dto.PostNewApproveLineInDto" alias="postNewApproveLineInDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetApproveLineInDto" alias="getApproveLineInDto"/>
+		<typeAlias type="apiserver.document.approval.dto.GetApproveLineOutDto" alias="getApproveLineOutDto"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/PostNewDocumentMapper.xml"/>
@@ -32,7 +34,7 @@
 		<mapper resource="mapper/GetOutboxListMapper.xml"/>
 		<mapper resource="mapper/GetInboxListMapper.xml"/>
 		<mapper resource="mapper/GetArchiveListMapper.xml"/>
-		<mapper resource="mapper/GetDocumentApproveHistoryMapper.xml"/>
+		<mapper resource="mapper/GetApproveLineMapper.xml"/>
 		<mapper resource="mapper/PutDocumentApproveStatusMapper.xml"/>
 		<mapper resource="mapper/GetDocumentInfoMapper.xml"/>
 		<mapper resource="mapper/PostUserAccountMapper.xml"/>

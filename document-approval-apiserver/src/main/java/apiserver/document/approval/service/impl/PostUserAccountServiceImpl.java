@@ -1,7 +1,7 @@
 package apiserver.document.approval.service.impl;
 
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import apiserver.document.approval.dto.PostUserAccountInDto;
 import apiserver.document.approval.dto.PostUserAccountOutDto;
@@ -10,7 +10,7 @@ import apiserver.document.approval.exception.ErrorCode;
 import apiserver.document.approval.mapper.PostUserAccountMapper;
 import apiserver.document.approval.service.PostUserAccountService;
 
-@Component
+@Service
 public class PostUserAccountServiceImpl implements PostUserAccountService {
 
     private final PostUserAccountMapper postUserAccountMapper;

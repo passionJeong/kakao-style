@@ -1,6 +1,6 @@
 package apiserver.document.approval.service.impl;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import apiserver.document.approval.dto.GetUserAccountInfoInDto;
 import apiserver.document.approval.dto.GetUserAccountInfoOutDto;
@@ -15,7 +15,7 @@ import apiserver.document.approval.service.GetUserAccountInfoService;
  * ID 기준으로 조회하여 해당 사용자 정보를 return
  */
 
-@Component
+@Service
 public class GetUserAccountInfoServiceImpl implements GetUserAccountInfoService {
 	
     private final GetUserAccountInfoMapper userInfoMapper;

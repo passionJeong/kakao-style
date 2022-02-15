@@ -1,6 +1,7 @@
 package apiserver.document.approval.dto;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class PutDocumentApproveStatusInDto {
 	//승인 또는 거절
 	@Size(min = 1, max = 1, message = "승인(A) 또는 거절(D) 값을 입력해주세요.")
 	@NotNull(message = "승인(A) 또는 거절(D) 값을 입력해주세요.")
+	@Pattern(regexp = "A||D", flags = Pattern.Flag.CASE_INSENSITIVE, message = "승인(A) 또는 거절(D) 값을 입력해주세요.")
 	private String approveStatus;
 	
 	//결재 메시지

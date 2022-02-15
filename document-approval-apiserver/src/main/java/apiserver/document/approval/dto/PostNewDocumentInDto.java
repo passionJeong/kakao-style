@@ -15,6 +15,7 @@ public class PostNewDocumentInDto {
 	private String documentTitle;
 	
 	//분류
+	@NotNull(message = "문서 타입을 입력해주세요.")
 	@Size(max = 30, message = "문서 타입은 최대 30자입니다.")
 	private String documentType;
 	

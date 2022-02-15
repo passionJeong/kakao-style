@@ -14,6 +14,7 @@ public enum ErrorCode {
 	DUPLICATE_ID(HttpStatus.BAD_REQUEST, "이미 회원가입되어있는 ID입니다."),
     APRV_COMPLETE(HttpStatus.BAD_REQUEST, "결재가 이미 완료 또는 반려된 문서입니다."),
     POST_DOC_FAIL(HttpStatus.BAD_REQUEST, "문서 생성에 실패하였습니다."),
+    POST_APRV_LINE_FAIL(HttpStatus.BAD_REQUEST, "결재라 생성에 실패하였습니다."),
     APRV_DOC_FAIL(HttpStatus.BAD_REQUEST, "문서 결재를 실패하였습니다."),
     APRV_INVALID_SEPARATOR(HttpStatus.BAD_REQUEST, "결재자 리스트의 구분자를 ','로 지정해주세요."),
     INVALID_INPUT(HttpStatus.BAD_REQUEST, "입력값을 확인해주세요."),
