@@ -9,8 +9,20 @@
 		APPROVE_USER_NUM = #{approveUserNum}
 		WHERE DOCUMENT_NUM = #{documentNum}
     </update>
-    <insert id="postDocumentApproveLog" parameterType="putDocumentApproveStatusInDto">
-    	INSERT INTO DOCUMENT_APPROVE_LOG(DOCUMENT_NUM, APPROVE_STATUS, APPROVE_MESSAGE, APPROVE_USER_NUM)
-    	VALUES(#{documentNum}, #{approveStatus}, #{approveMessage}, #{approveUserNum})
-    </insert>
+    <update id="putDocumentApproveLine" parameterType="putDocumentApproveStatusInDto">
+    	UPDATE APPROVE_LINE
+    	SET APPROVE_STATUS = #{approveStatus},
+    	APPROVE_MESSAGE = #{approveMessage}
+    	WHERE DOCUMENT_NUM = #{documentNum}
+    	AND APPROVE_USER_NUM = #{approveUserNum}
+    </update>
+    <select id="getNextApproveUserNum" parameterType="putDocumentApproveStatusInDto" resultType="getNextApproveUserNumOutDto">
+    	SELECT APPROVE_USER_NUM
+    	FROM APPROVE_LINE
+    	WHERE DOCUMENT_NUM = #{documentNum}
+    	AND APPROVE_STATUS IN ('I')
+    	<![CDATA[ AND ROWNUM <= 1 ]]>
+    	ORDER BY APPROVE_USER_NUM ASC
+    </select>
+    
 </mapper>

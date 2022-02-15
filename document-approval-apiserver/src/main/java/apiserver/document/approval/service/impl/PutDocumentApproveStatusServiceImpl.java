@@ -1,11 +1,10 @@
 package apiserver.document.approval.service.impl;
 
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 import apiserver.document.approval.dto.GetDocumentInfoInDto;
 import apiserver.document.approval.dto.GetDocumentInfoOutDto;
+import apiserver.document.approval.dto.GetNextApproveUserNumOutDto;
 import apiserver.document.approval.dto.PutDocumentApproveStatusInDto;
 import apiserver.document.approval.dto.PutDocumentApproveStatusOutDto;
 import apiserver.document.approval.exception.CustomException;
@@ -20,7 +19,7 @@ import apiserver.document.approval.service.PutDocumentApproveStatusService;
  * 문서의 승인/반려를 처리한다.
  */
 
-@Component
+@Service
 public class PutDocumentApproveStatusServiceImpl implements PutDocumentApproveStatusService {
 
 	private final PutDocumentApproveStatusMapper putDocumentApproveStatusMapper;
@@ -33,7 +32,6 @@ public class PutDocumentApproveStatusServiceImpl implements PutDocumentApproveSt
 	}
 	
 	@Override
-	@Transactional(propagation=Propagation.REQUIRED)
 	public PutDocumentApproveStatusOutDto putDocumentApproveStatus(PutDocumentApproveStatusInDto documentApproveStatus) {
 		
 		//승인요청이 들어온 문서의 정보를 가져온다.
@@ -57,29 +55,24 @@ public class PutDocumentApproveStatusServiceImpl implements PutDocumentApproveSt
 			throw new CustomException(ErrorCode.APRV_COMPLETE);
 		}
 		
-		//로그 적재
-		int result = putDocumentApproveStatusMapper.postDocumentApproveLog(documentApproveStatus);
+		//결재 처리(결재라인 테이블에 업데이트)
+		int result = putDocumentApproveStatusMapper.putDocumentApproveLine(documentApproveStatus);
 		
 		if(result != 1) {
 			throw new CustomException(ErrorCode.APRV_DOC_FAIL);
 		}
 		
 		//승인 또는 거절 실제 요청온 내용
-		String approveStatus = documentApproveStatus.getApproveStatus();
+		String approveStatus = documentApproveStatus.getApproveStatus().toUpperCase();
 		
 		if(approveStatus.equals("A")) {
 			//승인일 경우 다음 결재자로 넘김
-			String[] approveLine = documentInfo.getApproveLine().split(",");
+			GetNextApproveUserNumOutDto approveLine = putDocumentApproveStatusMapper.getNextApproveUserNum(documentApproveStatus);
 			
-			for(int i = 0; i < approveLine.length; i++) {
-				if(Integer.parseInt(approveLine[i]) == documentApproveStatus.getApproveUserNum()) {
-					if(i != approveLine.length - 1) {
-						//마지막 순번 아닐 경우 다음 순번으로 결재자 지정
-						documentApproveStatus.setApproveStatus("I"); //결재 진행 중
-						documentApproveStatus.setApproveUserNum(Integer.parseInt(approveLine[i + 1]));
-						break;
-					}
-				}
+			if(approveLine != null) {
+				//마지막 순번 아닐 경우 다음 순번으로 결재자 지정
+				documentApproveStatus.setApproveStatus("I"); //결재 진행 중
+				documentApproveStatus.setApproveUserNum(approveLine.getApproveUserNum());
 			}
 			
 		}

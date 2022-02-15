@@ -73,7 +73,6 @@ public class GetUserAccountInfoServiceTest {
 	@Test
 	@Order(3)
 	public void getApproverListTest() {
-		GetApproverListInDto input = new GetApproverListInDto();
 		List<GetApproverListOutDto> output = getApproverListService.getApproverList();
 
 		assertEquals(3, output.size());

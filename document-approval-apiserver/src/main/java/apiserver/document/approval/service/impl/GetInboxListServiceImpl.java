@@ -2,7 +2,7 @@ package apiserver.document.approval.service.impl;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import apiserver.document.approval.dto.GetInboxListInDto;
 import apiserver.document.approval.dto.GetInboxListOutDto;
@@ -15,7 +15,7 @@ import apiserver.document.approval.service.GetInboxListService;
  * 결재를 해야하는 문서를 조회한다.
  */
 
-@Component
+@Service
 public class GetInboxListServiceImpl implements GetInboxListService {
 
 	private final GetInboxListMapper getInboxListMapper;

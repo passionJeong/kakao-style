@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import apiserver.document.approval.dto.GetDocumentApproveHistoryInDto;
-import apiserver.document.approval.dto.GetDocumentApproveHistoryOutDto;
+import apiserver.document.approval.dto.GetApproveLineInDto;
+import apiserver.document.approval.dto.GetApproveLineOutDto;
 import apiserver.document.approval.dto.PutDocumentApproveStatusInDto;
 import apiserver.document.approval.dto.PutDocumentApproveStatusOutDto;
-import apiserver.document.approval.service.GetDocumentApproveHistoryService;
+import apiserver.document.approval.service.GetApproveLineService;
 import apiserver.document.approval.service.PutDocumentApproveStatusService;
 
 /**
@@ -28,11 +28,11 @@ public class DocumentApprovalController {
 	
 	private final PutDocumentApproveStatusService putDocumentApproveStatusService;
 	
-	private final GetDocumentApproveHistoryService getDocumentApproveHistoryService;
+	private final GetApproveLineService getApproveLineService;
 	
-	public DocumentApprovalController(PutDocumentApproveStatusService putDocumentApproveStatusService, GetDocumentApproveHistoryService getDocumentApproveHistoryService) {
+	public DocumentApprovalController(PutDocumentApproveStatusService putDocumentApproveStatusService, GetApproveLineService getApproveLineService) {
 		this.putDocumentApproveStatusService = putDocumentApproveStatusService;
-		this.getDocumentApproveHistoryService = getDocumentApproveHistoryService;
+		this.getApproveLineService = getApproveLineService;
 	}
 
 	//문서 승인, 거절 서비스
@@ -44,11 +44,11 @@ public class DocumentApprovalController {
 		return output;
 	}
 
-	//문서 승인, 거절 히스토리 조회 서비스
+	//결재 라인 조회(결재 내역 조회)
 	@ResponseBody
-	@GetMapping("/v1/document-approve-history")
-	public List<GetDocumentApproveHistoryOutDto> getDocumentApproveHistory(@RequestBody @Valid GetDocumentApproveHistoryInDto input) {
-		List<GetDocumentApproveHistoryOutDto> output = getDocumentApproveHistoryService.getDocumentApproveHistory(input);
+	@GetMapping("/v1/document-approve-line")
+	public List<GetApproveLineOutDto> getDocumentApproveHistory(@RequestBody @Valid GetApproveLineInDto input) {
+		List<GetApproveLineOutDto> output = getApproveLineService.getApproveLine(input);
 		
 		return output;
 	}
